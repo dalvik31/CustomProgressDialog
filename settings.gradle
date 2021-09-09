@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "CustomProgress"
 include ':app'
+include ':ProgressCustom'

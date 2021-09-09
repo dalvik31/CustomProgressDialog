@@ -1,4 +1,4 @@
-package com.dalvik.customprogress
+package com.dalvik.progresscustom
 
 import android.content.DialogInterface
 import android.view.LayoutInflater
