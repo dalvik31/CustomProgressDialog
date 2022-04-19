@@ -2,7 +2,6 @@ package com.dalvik.customprogress
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.dalvik.progresscustom.ProgressCustom
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -13,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         buttonShowProgress.setOnClickListener{
             progressCustom
-                .message("Obteniendo ubicacion")
+                .setCancelable(true)
                 .colorText(R.color.purple_200)
                 .colorProgress(R.color.purple_200)
                 .colorBackground(R.color.purple_500)
@@ -21,11 +20,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonHideProgress.setOnClickListener{
-            progressCustom
-                .setCancelable(false){
-                   //any action
-                }
-                .showProgress()
+            progressCustom.hideProgress()
         }
     }
 }
