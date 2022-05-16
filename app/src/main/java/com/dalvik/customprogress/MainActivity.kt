@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
             progressCustom
                 .setCancelable(true)
                 .colorText(android.R.color.darker_gray)
+                .message("Custom message")
                 .colorBackground(android.R.color.white)
                 .showProgress()
         }

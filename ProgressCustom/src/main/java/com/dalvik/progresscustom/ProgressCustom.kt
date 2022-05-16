@@ -2,12 +2,10 @@ package com.dalvik.progresscustom
 
 import android.content.DialogInterface
 import android.view.LayoutInflater
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import java.lang.ref.WeakReference
-import android.content.res.ColorStateList
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.airbnb.lottie.LottieAnimationView
@@ -65,7 +63,7 @@ class ProgressCustom private constructor(private val activity: WeakReference<App
             val view = inflater.inflate(R.layout.custom_dialog, null)
             val progressBar = view.findViewById<LottieAnimationView>(R.id.progress_animation)
             val containerCardView = view.findViewById<CardView>(R.id.containerProgress)
-            val messageTexview = view.findViewById<TextView>(R.id.textMessage)
+            val messageTexView = view.findViewById<TextView>(R.id.textMessage)
 
             builder.setView(view)
             builder.setCancelable(cancelableDialog)
@@ -84,7 +82,7 @@ class ProgressCustom private constructor(private val activity: WeakReference<App
                 )
             }
 
-            messageTexview.setTextColor(
+            messageTexView.setTextColor(
                 ContextCompat.getColor(
                     activity,
                     if (colorText != 0) colorText else android.R.color.darker_gray
@@ -99,7 +97,7 @@ class ProgressCustom private constructor(private val activity: WeakReference<App
                 )
             )
 
-            messageTexview.text = message.ifBlank { "Cargando" }
+            messageTexView.text = message.ifBlank { activity.getString(android.R.string.ok) }
             alertDialog.show()
         }
     }
