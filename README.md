@@ -27,11 +27,12 @@ dependencies {
  private val progressCustom = ProgressCustom.from(this)
  
    buttonShowProgress.setOnClickListener{
-            progressCustom
+                   progressCustom
                 .setCancelable(true)
-                .colorText(R.color.purple_200)
-                .colorProgress(R.color.purple_200)
-                .colorBackground(R.color.purple_500)
+                .colorText(android.R.color.darker_gray)
+                .message("Custom message")
+		.lottieAnimation(R.raw.animation)
+                .colorBackground(android.R.color.white)
                 .showProgress()
         }
         
