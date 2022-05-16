@@ -13,9 +13,8 @@ class MainActivity : AppCompatActivity() {
         buttonShowProgress.setOnClickListener{
             progressCustom
                 .setCancelable(true)
-                .colorText(R.color.purple_200)
-                .colorProgress(R.color.purple_200)
-                .colorBackground(R.color.purple_500)
+                .colorText(android.R.color.darker_gray)
+                .colorBackground(android.R.color.white)
                 .showProgress()
         }
 

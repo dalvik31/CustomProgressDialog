@@ -10,11 +10,13 @@
         android:id="@+id/containerProgress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:elevation="0dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="10dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -22,32 +24,35 @@
             android:layout_height="match_parent">
 
 
-            <ProgressBar
-                android:id="@+id/progressBar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/progress_animation"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:indeterminate="true"/>
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/lottile_button_loader" />
 
             <TextView
                 android:id="@+id/textMessage"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="20sp"
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif-light"
+                android:gravity="center"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/progressBar"
+                app:layout_constraintTop_toBottomOf="@+id/progress_animation"
                 app:layout_constraintVertical_bias="0.013"
-                tools:text="Cargando"
-                android:gravity="center"
-                android:layout_margin="20sp" />
+                tools:text="Cargando" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

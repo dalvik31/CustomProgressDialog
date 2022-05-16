@@ -10,14 +10,15 @@ import java.lang.ref.WeakReference
 import android.content.res.ColorStateList
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
+import com.airbnb.lottie.LottieAnimationView
 
 
 class ProgressCustom private constructor(private val activity: WeakReference<AppCompatActivity>) {
 
     private var message: String = String()
-    private var colorProgress: Int = 0
     private var colorBackground: Int = 0
     private var colorText: Int = 0
+    private var lottieFile: Int = 0
     private var cancelableDialog: Boolean = false
     private lateinit var alertDialog: AlertDialog
     private var callback: (DialogInterface) -> Unit = {}
@@ -28,11 +29,6 @@ class ProgressCustom private constructor(private val activity: WeakReference<App
 
     fun message(message: String): ProgressCustom {
         this.message = message
-        return this
-    }
-
-    fun colorProgress(colorProgress: Int): ProgressCustom {
-        this.colorProgress = colorProgress
         return this
     }
 
@@ -51,6 +47,11 @@ class ProgressCustom private constructor(private val activity: WeakReference<App
         return this
     }
 
+    fun lottieAnimation(lottieFile: Int): ProgressCustom {
+        this.lottieFile = lottieFile
+        return this
+    }
+
     fun setCancelCallback(callback: (DialogInterface) -> Unit): ProgressCustom {
         this.callback = callback
         return this
@@ -62,7 +63,7 @@ class ProgressCustom private constructor(private val activity: WeakReference<App
             val builder = AlertDialog.Builder(activity)
             val inflater: LayoutInflater = activity.layoutInflater
             val view = inflater.inflate(R.layout.custom_dialog, null)
-            val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
+            val progressBar = view.findViewById<LottieAnimationView>(R.id.progress_animation)
             val containerCardView = view.findViewById<CardView>(R.id.containerProgress)
             val messageTexview = view.findViewById<TextView>(R.id.textMessage)
 
@@ -76,16 +77,12 @@ class ProgressCustom private constructor(private val activity: WeakReference<App
             alertDialog = builder.create()
             alertDialog.window!!.setBackgroundDrawableResource(android.R.color.transparent)
 
-            progressBar.indeterminateTintList =
-                ColorStateList.valueOf(
-                    ContextCompat.getColor(
-                        activity,
-                        if (colorProgress != 0) colorProgress else
-                            android.R.color.darker_gray
-                    )
+
+            if(lottieFile!=0){
+                progressBar.setAnimation(
+                    lottieFile
                 )
-
-
+            }
 
             messageTexview.setTextColor(
                 ContextCompat.getColor(
